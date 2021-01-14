@@ -28,6 +28,14 @@ namespace OrderAppWebApi
         {
             services.AddSingleton<OrderAppDbContext>();
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200", "http://localhost:4201", "https://localhost:4200", "https://localhost:4201", "https://localhost:44300").AllowAnyHeader()
+                    .AllowAnyMethod().AllowCredentials();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +48,7 @@ namespace OrderAppWebApi
 
             app.UseHttpsRedirection();
 
-
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
