@@ -30,7 +30,7 @@ namespace OrderAppWebApi.Controllers
 
         // GET: api/Address/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Address>> GetAddress(int id)
+        public async Task<ActionResult<Address>> GetAddress(Guid id)
         {
             var address = await _context.Address.FindAsync(id);
 
@@ -46,7 +46,7 @@ namespace OrderAppWebApi.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAddress(int id, Address address)
+        public async Task<IActionResult> PutAddress(Guid id, Address address)
         {
             if (id != address.Id)
             {
@@ -88,7 +88,7 @@ namespace OrderAppWebApi.Controllers
 
         // DELETE: api/Address/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Address>> DeleteAddress(int id)
+        public async Task<ActionResult<Address>> DeleteAddress(Guid id)
         {
             var address = await _context.Address.FindAsync(id);
             if (address == null)
@@ -102,7 +102,7 @@ namespace OrderAppWebApi.Controllers
             return address;
         }
 
-        private bool AddressExists(int id)
+        private bool AddressExists(Guid id)
         {
             return _context.Address.Any(e => e.Id == id);
         }

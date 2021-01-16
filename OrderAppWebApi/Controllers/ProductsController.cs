@@ -29,25 +29,25 @@ namespace OrderAppWebApi.Controllers
         }
 
         [HttpGet("getbyid")]
-        public IQueryable<Product> GetProductsWithCategory(int categoryId)
+        public IQueryable<Product> GetProductsWithCategory(Guid categoryId)
         {
             var result = _context.Categories.Where(c => c.Id == categoryId).SelectMany(m => m.Products);
             return result;
         }
 
-        // GET: api/Products/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Product>> GetProducts(int id)
-        //{
-        //    var products = await _context.Products.FindAsync(id);
+        //GET: api/Products/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProducts(Guid id)
+        {
+            var products = await _context.Products.FindAsync(id);
 
-        //    if (products == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (products == null)
+            {
+                return NotFound();
+            }
 
-        //    return products;
-        //}
+            return products;
+        }
 
 
 
@@ -55,7 +55,7 @@ namespace OrderAppWebApi.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducts(int id, Product products)
+        public async Task<IActionResult> PutProducts(Guid id, Product products)
         {
             if (id != products.Id)
             {
@@ -97,7 +97,7 @@ namespace OrderAppWebApi.Controllers
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Product>> DeleteProducts(int id)
+        public async Task<ActionResult<Product>> DeleteProducts(Guid id)
         {
             var products = await _context.Products.FindAsync(id);
             if (products == null)
@@ -111,7 +111,7 @@ namespace OrderAppWebApi.Controllers
             return products;
         }
 
-        private bool ProductsExists(int id)
+        private bool ProductsExists(Guid id)
         {
             return _context.Products.Any(e => e.Id == id);
         }

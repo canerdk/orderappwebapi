@@ -13,7 +13,7 @@ namespace OrderAppWebApi.DAL.Entities
             Members = new Collection<Member>();
             Orders = new Collection<Order>();
         }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Street { get; set; }
         public string Avenue { get; set; }
         public string Neighborhood { get; set; }

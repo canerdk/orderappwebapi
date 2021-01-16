@@ -12,13 +12,14 @@ namespace OrderAppWebApi.DAL.Entities
         {
             OrderDetails = new Collection<OrderDetail>();
         }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public DateTime CreatedDate { get; set; }
         public string IPAddress { get; set; }
+        public int? Status { get; set; }
         public string Note { get; set; }
-        public int AddressId { get; set; }
+        public Guid AddressId { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

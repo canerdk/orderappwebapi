@@ -11,7 +11,7 @@ namespace OrderAppWebApi.DAL.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = .; Database = OrderApp; Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server = .; Database = OrderAppDB; Trusted_Connection=True;");
         }
 
         public DbSet<Customer> Customers { get; set; }

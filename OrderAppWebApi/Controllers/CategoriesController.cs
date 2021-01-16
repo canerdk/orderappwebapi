@@ -31,7 +31,7 @@ namespace OrderAppWebApi.Controllers
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategories(int id)
+        public async Task<ActionResult<Category>> GetCategories(Guid id)
         {
             var categories = await _context.Categories.FindAsync(id);
 
@@ -48,7 +48,7 @@ namespace OrderAppWebApi.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategories(int id, Category categories)
+        public async Task<IActionResult> PutCategories(Guid id, Category categories)
         {
             if (id != categories.Id)
             {
@@ -90,7 +90,7 @@ namespace OrderAppWebApi.Controllers
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Category>> DeleteCategories(int id)
+        public async Task<ActionResult<Category>> DeleteCategories(Guid id)
         {
             var categories = await _context.Categories.FindAsync(id);
             if (categories == null)
@@ -104,7 +104,7 @@ namespace OrderAppWebApi.Controllers
             return categories;
         }
 
-        private bool CategoriesExists(int id)
+        private bool CategoriesExists(Guid id)
         {
             return _context.Categories.Any(e => e.Id == id);
         }

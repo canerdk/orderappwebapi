@@ -30,7 +30,7 @@ namespace OrderAppWebApi.Controllers
 
         // GET: api/Members/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Member>> GetMember(int id)
+        public async Task<ActionResult<Member>> GetMember(Guid id)
         {
             var member = await _context.Members.FindAsync(id);
 
@@ -46,7 +46,7 @@ namespace OrderAppWebApi.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMember(int id, Member member)
+        public async Task<IActionResult> PutMember(Guid id, Member member)
         {
             if (id != member.Id)
             {
@@ -88,7 +88,7 @@ namespace OrderAppWebApi.Controllers
 
         // DELETE: api/Members/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Member>> DeleteMember(int id)
+        public async Task<ActionResult<Member>> DeleteMember(Guid id)
         {
             var member = await _context.Members.FindAsync(id);
             if (member == null)
@@ -102,7 +102,7 @@ namespace OrderAppWebApi.Controllers
             return member;
         }
 
-        private bool MemberExists(int id)
+        private bool MemberExists(Guid id)
         {
             return _context.Members.Any(e => e.Id == id);
         }
