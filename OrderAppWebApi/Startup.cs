@@ -27,6 +27,7 @@ namespace OrderAppWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<OrderAppDbContext>();
+            services.AddTransient<OrderAppDbContext>();
             services.AddControllers();
             services.AddCors(options =>
             {

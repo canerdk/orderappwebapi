@@ -19,8 +19,8 @@ namespace OrderAppWebApi.DAL.Entities
         public string IPAddress { get; set; }
         public int? Status { get; set; }
         public string Note { get; set; }
-        public Guid AddressId { get; set; }
+        public string Address { get; set; }
 
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
